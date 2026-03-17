@@ -167,7 +167,7 @@ vector<Question> buildMathBank() {
         {"What is 5 to the power of 2?",                {"10","15","20","25"},              3, Category::ALGEBRA, 2},
         {"If 3x - 6 = 9, what is x?",                  {"3","4","5","6"},                  2, Category::ALGEBRA, 2},
     };
-
+}
 
 // 20 Elements + 20 Reactions = 40 Chemistry questions
 vector<Question> buildChemistryBank() {
@@ -216,3 +216,49 @@ vector<Question> buildChemistryBank() {
     };
 }
 
+// 20 Grammar + 20 Vocabulary = 40 English questions
+vector<Question> buildEnglishBank() {
+    return {
+        {"Which sentence is correct?",                          {"She go home","She goes home","She going home","She gone home"},        1, Category::GRAMMAR, 1},
+        {"What is the plural of 'child'?",                      {"Childs","Childes","Children","Childrens"},                            2, Category::GRAMMAR, 1},
+        {"Which is a verb?",                                    {"Beautiful","Quickly","Run","Happiness"},                              2, Category::GRAMMAR, 1},
+        {"What is the past tense of 'eat'?",                    {"Eated","Ate","Eaten","Eats"},                                         1, Category::GRAMMAR, 1},
+        {"Which word is an adjective?",                         {"Slowly","Bright","Jump","Happiness"},                                 1, Category::GRAMMAR, 1},
+        {"What is the plural of 'mouse'?",                      {"Mouses","Mice","Mousies","Mouse"},                                    1, Category::GRAMMAR, 1},
+        {"Which is the correct comparative of 'tall'?",         {"More tall","Taller","Tallier","Most tall"},                           1, Category::GRAMMAR, 1},
+        {"What is the past tense of 'go'?",                     {"Goed","Goes","Gone","Went"},                                          3, Category::GRAMMAR, 1},
+        {"Which is a conjunction?",                             {"But","Quickly","Blue","Laugh"},                                       0, Category::GRAMMAR, 1},
+        {"What is the superlative of 'good'?",                  {"Gooder","Better","Goodest","Best"},                                   3, Category::GRAMMAR, 1},
+        {"Which sentence uses the present perfect?",            {"I eat lunch","I ate lunch","I have eaten lunch","I was eating lunch"}, 2, Category::GRAMMAR, 1},
+        {"What is the plural of 'tooth'?",                      {"Tooths","Teeths","Teeth","Toothes"},                                  2, Category::GRAMMAR, 1},
+        {"Which is a preposition?",                             {"Under","Beautiful","Quickly","Shout"},                                0, Category::GRAMMAR, 1},
+        {"What is the past tense of 'write'?",                  {"Writed","Written","Wrote","Writes"},                                  2, Category::GRAMMAR, 1},
+        {"Which word is an adverb?",                            {"Happy","Happily","Happiness","Happier"},                              1, Category::GRAMMAR, 1},
+        {"What is the plural of 'cactus'?",                     {"Cactuses","Cacties","Cacti","Cactuss"},                               2, Category::GRAMMAR, 1},
+        {"Identify the noun: 'The dog barks loudly.'",          {"The","Barks","Dog","Loudly"},                                         2, Category::GRAMMAR, 1},
+        {"Which is the correct passive voice?",                 {"The cat ate the fish","The fish was eaten by the cat","The fish ate the cat","The cat was eaten"}, 1, Category::GRAMMAR, 1},
+        {"What type of sentence is: 'What time is it?'",        {"Declarative","Imperative","Interrogative","Exclamatory"},             2, Category::GRAMMAR, 1},
+        {"What is the past tense of 'run'?",                    {"Runned","Runs","Ran","Run"},                                          2, Category::GRAMMAR, 1},
+
+        {"What does 'enormous' mean?",                          {"Tiny","Fast","Very large","Very dark"},                               2, Category::VOCABULARY, 2},
+        {"What is a synonym for 'happy'?",                      {"Sad","Angry","Joyful","Tired"},                                       2, Category::VOCABULARY, 2},
+        {"What does 'transparent' mean?",                       {"Solid","You can see through it","Very heavy","Colorful"},             1, Category::VOCABULARY, 2},
+        {"Which word means 'to begin'?",                        {"Finish","Pause","Start","Stop"},                                      2, Category::VOCABULARY, 2},
+        {"What is an antonym of 'ancient'?",                    {"Old","Historic","Modern","Tall"},                                     2, Category::VOCABULARY, 2},
+        {"What does 'benevolent' mean?",                        {"Evil","Kind and generous","Angry","Confused"},                        1, Category::VOCABULARY, 2},
+        {"Which word means 'to make better'?",                  {"Worsen","Improve","Ignore","Destroy"},                                1, Category::VOCABULARY, 2},
+        {"What does 'arid' describe?",                          {"Very cold","Very wet","Very dry","Very windy"},                       2, Category::VOCABULARY, 2},
+        {"What is a synonym for 'brave'?",                      {"Scared","Courageous","Weak","Lazy"},                                  1, Category::VOCABULARY, 2},
+        {"What does 'nocturnal' mean?",                         {"Active during the day","Active at night","Living in water","Living underground"}, 1, Category::VOCABULARY, 2},
+        {"What is an antonym of 'expand'?",                     {"Grow","Increase","Contract","Multiply"},                              2, Category::VOCABULARY, 2},
+        {"What does 'vivid' mean?",                             {"Dull","Unclear","Bright and striking","Quiet"},                       2, Category::VOCABULARY, 2},
+        {"Which word means 'a feeling of great joy'?",          {"Sorrow","Elation","Anger","Fear"},                                    1, Category::VOCABULARY, 2},
+        {"What does 'ambiguous' mean?",                         {"Clear and obvious","Having more than one meaning","Very loud","Extremely small"}, 1, Category::VOCABULARY, 2},
+        {"What is a synonym for 'old'?",                        {"Young","New","Ancient","Fast"},                                       2, Category::VOCABULARY, 2},
+        {"What does 'scarce' mean?",                            {"Plentiful","In short supply","Very large","Extremely common"},        1, Category::VOCABULARY, 2},
+        {"Which word means 'to copy someone'?",                 {"Ignore","Imitate","Create","Destroy"},                                1, Category::VOCABULARY, 2},
+        {"What does 'eloquent' mean?",                          {"Speaking poorly","Speaking fluently and persuasively","Speaking quietly","Speaking angrily"}, 1, Category::VOCABULARY, 2},
+        {"What is an antonym of 'victory'?",                    {"Win","Success","Defeat","Achievement"},                               2, Category::VOCABULARY, 2},
+        {"What does 'monotonous' mean?",                        {"Exciting and varied","Dull and repetitive","Loud and clear","Bright and colorful"}, 1, Category::VOCABULARY, 2},
+    };
+}
