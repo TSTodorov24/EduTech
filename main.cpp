@@ -167,4 +167,52 @@ vector<Question> buildMathBank() {
         {"What is 5 to the power of 2?",                {"10","15","20","25"},              3, Category::ALGEBRA, 2},
         {"If 3x - 6 = 9, what is x?",                  {"3","4","5","6"},                  2, Category::ALGEBRA, 2},
     };
+
+
+// 20 Elements + 20 Reactions = 40 Chemistry questions
+vector<Question> buildChemistryBank() {
+    return {
+        {"What is the chemical symbol for water?",          {"H2O","CO2","O2","NaCl"},                                  0, Category::ELEMENTS, 1},
+        {"What is the symbol for gold?",                    {"Go","Gd","Au","Ag"},                                      2, Category::ELEMENTS, 1},
+        {"What is the symbol for sodium?",                  {"So","Sa","Sn","Na"},                                      3, Category::ELEMENTS, 1},
+        {"What is the symbol for iron?",                    {"Ir","In","Fe","Io"},                                      2, Category::ELEMENTS, 1},
+        {"What is the symbol for oxygen?",                  {"Ox","O2","O","Og"},                                       2, Category::ELEMENTS, 1},
+        {"What is the symbol for carbon?",                  {"Ca","Cb","C","Cr"},                                       2, Category::ELEMENTS, 1},
+        {"What is the symbol for silver?",                  {"Si","Sl","Ag","Sv"},                                      2, Category::ELEMENTS, 1},
+        {"What is the symbol for copper?",                  {"Co","Cp","Cu","Cb"},                                      2, Category::ELEMENTS, 1},
+        {"What is the symbol for hydrogen?",                {"Hy","Hd","He","H"},                                       3, Category::ELEMENTS, 1},
+        {"What is the symbol for nitrogen?",                {"Ni","Nt","N","Ng"},                                       2, Category::ELEMENTS, 1},
+        {"What is the symbol for calcium?",                 {"Cm","Ca","Cl","Ce"},                                      1, Category::ELEMENTS, 1},
+        {"What is the symbol for potassium?",               {"Po","Pt","Ps","K"},                                       3, Category::ELEMENTS, 1},
+        {"What is the symbol for chlorine?",                {"Ch","Cl","Ce","Cr"},                                      1, Category::ELEMENTS, 1},
+        {"What is the symbol for magnesium?",               {"Mn","Me","Mg","Ma"},                                      2, Category::ELEMENTS, 1},
+        {"What is the symbol for zinc?",                    {"Zi","Zn","Ze","Zk"},                                      1, Category::ELEMENTS, 1},
+        {"What is the symbol for lead?",                    {"Ld","Le","Pb","Pl"},                                      2, Category::ELEMENTS, 1},
+        {"What is the symbol for tin?",                     {"Ti","Tn","Sn","Ts"},                                      2, Category::ELEMENTS, 1},
+        {"What is the symbol for sulfur?",                  {"Su","Sf","Se","S"},                                       3, Category::ELEMENTS, 1},
+        {"What is the symbol for phosphorus?",              {"Ph","Ps","P","Pc"},                                       2, Category::ELEMENTS, 1},
+        {"What is the symbol for fluorine?",                {"Fl","Fu","Fr","F"},                                       3, Category::ELEMENTS, 1},
+
+        {"Water boils at what temperature (Celsius)?",      {"80","90","100","110"},                                    2, Category::REACTIONS, 2},
+        {"What gas is produced in photosynthesis?",         {"CO2","O2","H2","N2"},                                     1, Category::REACTIONS, 2},
+        {"NaCl is the formula for?",                        {"Vinegar","Sugar","Salt","Baking soda"},                   2, Category::REACTIONS, 2},
+        {"What is the pH of pure water?",                   {"5","6","7","8"},                                          2, Category::REACTIONS, 2},
+        {"CO2 stands for?",                                 {"Carbon monoxide","Carbon dioxide","Calcium oxide","Copper oxide"}, 1, Category::REACTIONS, 2},
+        {"Which gas makes up most of Earth's air?",         {"Oxygen","Carbon dioxide","Nitrogen","Hydrogen"},          2, Category::REACTIONS, 2},
+        {"Water freezes at what temperature (Celsius)?",    {"0","4","-4","-10"},                                       0, Category::REACTIONS, 2},
+        {"What type of reaction releases energy as heat?",  {"Endothermic","Exothermic","Neutral","Catalytic"},         1, Category::REACTIONS, 2},
+        {"What is the chemical formula for table sugar?",   {"C6H12O6","C12H22O11","C2H5OH","CH4"},                    1, Category::REACTIONS, 2},
+        {"Acids have a pH of?",                             {"Less than 7","Exactly 7","More than 7","Exactly 14"},     0, Category::REACTIONS, 2},
+        {"What is produced when an acid reacts with a base?",{"Acid and base","Salt and water","Gas and solid","Only gas"}, 1, Category::REACTIONS, 2},
+        {"Which is an example of a physical change?",       {"Burning wood","Rusting iron","Melting ice","Baking bread"}, 2, Category::REACTIONS, 2},
+        {"What gas do plants absorb from the air?",         {"Oxygen","Nitrogen","Carbon dioxide","Hydrogen"},          2, Category::REACTIONS, 2},
+        {"What is the chemical formula for methane?",       {"CO2","CH4","C2H6","C3H8"},                                1, Category::REACTIONS, 2},
+        {"Which metal does NOT rust?",                      {"Iron","Steel","Aluminum","Copper"},                       3, Category::REACTIONS, 2},
+        {"What is the chemical formula for ethanol?",       {"CH4","C2H5OH","C3H7OH","C6H12O6"},                       1, Category::REACTIONS, 2},
+        {"What type of bond shares electrons equally?",     {"Ionic","Covalent","Metallic","Hydrogen"},                 1, Category::REACTIONS, 2},
+        {"Oxidation means loss of?",                        {"Protons","Neutrons","Electrons","Mass"},                  2, Category::REACTIONS, 2},
+        {"Which is NOT a state of matter?",                 {"Solid","Liquid","Gas","Energy"},                          3, Category::REACTIONS, 2},
+        {"What does a catalyst do in a reaction?",          {"Slows it down","Has no effect","Speeds it up without being consumed","Stops it"}, 2, Category::REACTIONS, 2},
+    };
 }
+
