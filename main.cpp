@@ -359,3 +359,96 @@ bool askQuestion(const Question& q, int questionNumber) {
     }
     return correct;
 }
+
+
+// ---------- RUN TEST ----------
+
+StudentResult runTest(mt19937& rng) {
+    string name = readName("\n  Enter your name: ");
+
+    displaySubjectMenu();
+    int subjectChoice = readInt("  Choose subject (1-4): ", 1, 4);
+
+    vector<Category> selectedCategories;
+    vector<Question> pool;
+
+    switch (subjectChoice) {
+    case 1:
+        selectedCategories = { Category::ARITHMETIC, Category::ALGEBRA };
+        pool = buildMathBank();
+        break;
+    case 2:
+        selectedCategories = { Category::ELEMENTS, Category::REACTIONS };
+        pool = buildChemistryBank();
+        break;
+    case 3:
+        selectedCategories = { Category::GRAMMAR, Category::VOCABULARY };
+        pool = buildEnglishBank();
+        break;
+    case 4:
+        selectedCategories = {
+            Category::ARITHMETIC, Category::ALGEBRA,
+            Category::ELEMENTS,   Category::REACTIONS,
+            Category::GRAMMAR,    Category::VOCABULARY
+        };
+        pool = buildFullBank();
+        break;
+    }
+
+    // Single subject: 20 questions (10 per category)
+    // Mixed: 24 questions (4 per category)
+    int testSize = (subjectChoice == 4) ? 24 : 20;
+    vector<Question> test = generateTest(pool, selectedCategories, testSize, rng);
+
+    cout << "\n  Test: " << test.size() << " questions\n";
+    displaySeparator();
+
+    StudentResult result;
+    result.name = name;
+    result.score = 0;
+    result.maxScore = 0;
+
+    for (Category c : selectedCategories) {
+        result.correctPerCategory[c] = 0;
+        result.totalPerCategory[c] = 0;
+    }
+
+    for (size_t i = 0; i < test.size(); i++) {
+        const Question& q = test[i];
+        result.maxScore += q.points;
+        result.totalPerCategory[q.category]++;
+
+        bool correct = askQuestion(q, static_cast<int>(i + 1));
+        if (correct) {
+            result.score += q.points;
+            result.correctPerCategory[q.category]++;
+        }
+        cout << "  Score: " << result.score << "/" << result.maxScore << "\n";
+    }
+
+    result.percentage = result.maxScore > 0
+        ? (static_cast<double>(result.score) / result.maxScore) * 100.0
+        : 0.0;
+    result.grade = calculateGrade(result.percentage);
+
+    displaySeparator();
+    cout << "\n  RESULT FOR: " << result.name << "\n";
+    displaySeparator();
+    cout << "  Score      : " << result.score << " / " << result.maxScore << "\n";
+    cout << "  Percentage : " << fixed << setprecision(1)
+        << result.percentage << "%\n";
+    cout << "  Grade      : " << gradeLabel(result.grade) << "\n";
+    displaySeparator();
+
+    cout << "\n  Category breakdown:\n";
+    for (const auto& [cat, total] : result.totalPerCategory) {
+        if (total == 0) continue;
+        int    correct = result.correctPerCategory.at(cat);
+        double pct = (static_cast<double>(correct) / total) * 100.0;
+        cout << "  - " << setw(14) << left << categoryToString(cat)
+            << ": " << correct << "/" << total
+            << "  (" << fixed << setprecision(0) << pct << "%)\n";
+    }
+
+    return result;
+}
