@@ -262,3 +262,100 @@ vector<Question> buildEnglishBank() {
         {"What does 'monotonous' mean?",                        {"Exciting and varied","Dull and repetitive","Loud and clear","Bright and colorful"}, 1, Category::VOCABULARY, 2},
     };
 }
+// Combines all three banks for mixed mode
+vector<Question> buildFullBank() {
+    vector<Question> full;
+    auto math = buildMathBank();
+    auto chem = buildChemistryBank();
+    auto english = buildEnglishBank();
+    full.insert(full.end(), math.begin(), math.end());
+    full.insert(full.end(), chem.begin(), chem.end());
+    full.insert(full.end(), english.begin(), english.end());
+    return full;
+}
+
+// ---------- GRADING ----------
+
+// Bulgarian 6-point scale: percentage thresholds -> grade
+double calculateGrade(double percentage) {
+    if (percentage >= 90.0) return 6.00;
+    if (percentage >= 75.0) return 5.00;
+    if (percentage >= 60.0) return 4.00;
+    if (percentage >= 45.0) return 3.00;
+    return 2.00;
+}
+
+string gradeLabel(double grade) {
+    if (grade >= 5.50) return "Excellent (6)";
+    if (grade >= 4.50) return "Very Good (5)";
+    if (grade >= 3.50) return "Good (4)";
+    if (grade >= 2.50) return "Average (3)";
+    return "Fail (2)";
+}
+
+// ---------- TEST GENERATION ----------
+
+// Selects N unique questions distributed evenly across categories
+// Uses per-category shuffle so each run produces a different set
+vector<Question> generateTest(
+    const vector<Question>& bank,
+    const vector<Category>& cats,
+    int totalQuestions,
+    mt19937& rng)
+{
+    map<Category, vector<Question>> byCategory;
+    for (const auto& q : bank) {
+        for (Category c : cats) {
+            if (q.category == c) {
+                byCategory[c].push_back(q);
+                break;
+            }
+        }
+    }
+
+    for (auto& [cat, pool] : byCategory) {
+        shuffle(pool.begin(), pool.end(), rng);
+    }
+
+    vector<Question> test;
+    int perCategory = totalQuestions / static_cast<int>(cats.size());
+    int remainder = totalQuestions % static_cast<int>(cats.size());
+
+    for (size_t i = 0; i < cats.size(); i++) {
+        int take = perCategory + (static_cast<int>(i) < remainder ? 1 : 0);
+        auto& pool = byCategory[cats[i]];
+        take = min(take, static_cast<int>(pool.size()));
+        for (int j = 0; j < take; j++) {
+            test.push_back(pool[j]);
+        }
+    }
+
+    shuffle(test.begin(), test.end(), rng);
+    return test;
+}
+
+// ---------- QUESTION DISPLAY ----------
+
+bool askQuestion(const Question& q, int questionNumber) {
+    cout << "\n  Q" << questionNumber
+        << ". [" << categoryToString(q.category)
+        << " | " << q.points << " pt]  "
+        << q.text << "\n\n";
+
+    for (size_t i = 0; i < q.options.size(); i++) {
+        cout << "     " << (i + 1) << ". " << q.options[i] << "\n";
+    }
+    cout << "\n";
+
+    int answer = readInt("  Your answer (1-4): ", 1, 4);
+    bool correct = (answer - 1) == q.correctIndex;
+
+    if (correct) {
+        cout << "  [CORRECT]  +" << q.points << " point(s)\n";
+    }
+    else {
+        cout << "  [WRONG]    Correct answer: "
+            << q.options[q.correctIndex] << "\n";
+    }
+    return correct;
+}
