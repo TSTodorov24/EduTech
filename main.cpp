@@ -531,3 +531,151 @@ void displayStatistics(const vector<StudentResult>& results) {
             << gradeLabel(r.grade) << "\n";
     }
 }
+
+// ---------- STUDY MATERIAL ----------
+
+void showMathMaterial() {
+    cout << "\n  ===  MATHEMATICS  ===\n\n";
+
+    cout << "  ARITHMETIC\n";
+    displaySeparator();
+    cout << "  Arithmetic is the foundation of all mathematics. It covers\n";
+    cout << "  the four basic operations applied to numbers.\n\n";
+
+    cout << "  Addition (+)\n";
+    cout << "  Combines two or more numbers into a total called the sum.\n";
+    cout << "  Order does not matter: a + b = b + a  (commutative property)\n";
+    cout << "  Adding zero changes nothing: a + 0 = a  (identity element)\n";
+    cout << "  Example: 47 + 36 = 83\n\n";
+
+    cout << "  Subtraction (-)\n";
+    cout << "  Finds the difference between two numbers.\n";
+    cout << "  Order matters: a - b is not the same as b - a\n";
+    cout << "  Subtracting a negative equals addition: a - (-b) = a + b\n";
+    cout << "  Example: 100 - 37 = 63\n\n";
+
+    cout << "  Multiplication (x)\n";
+    cout << "  Repeated addition of the same number.\n";
+    cout << "  4 x 6 means 4 added 6 times: 4+4+4+4+4+4 = 24\n";
+    cout << "  Anything multiplied by 0 equals 0. Anything x 1 = itself.\n";
+    cout << "  Example: 12 x 12 = 144\n\n";
+
+    cout << "  Division (/)\n";
+    cout << "  Splits a number into equal parts.\n";
+    cout << "  36 / 4 = 9 means: how many groups of 4 fit into 36?\n";
+    cout << "  Division by zero is undefined and not allowed in mathematics.\n";
+    cout << "  Remainder: 17 / 5 = 3 remainder 2\n\n";
+
+    cout << "  Order of Operations (PEMDAS / BODMAS)\n";
+    cout << "  Parentheses -> Exponents -> Multiply/Divide -> Add/Subtract\n";
+    cout << "  Always left to right for same-priority operations.\n";
+    cout << "  Example: 2 + 3 x 4 = 2 + 12 = 14  (NOT 20)\n\n";
+
+    cout << "  ALGEBRA\n";
+    displaySeparator();
+    cout << "  Algebra uses letters (variables) to represent unknown values,\n";
+    cout << "  allowing us to write and solve general rules and equations.\n\n";
+
+    cout << "  Variables and Expressions\n";
+    cout << "  x, y, z are the most common variable names.\n";
+    cout << "  An expression like 3x + 2 means: multiply x by 3, then add 2.\n";
+    cout << "  Expressions do NOT contain an equals sign; equations do.\n\n";
+
+    cout << "  Solving Linear Equations\n";
+    cout << "  Goal: isolate the variable on one side of the equals sign.\n";
+    cout << "  Key rule: whatever you do to one side, do to the other.\n";
+    cout << "  Example:  2x + 4 = 14\n";
+    cout << "    Step 1: subtract 4 from both sides -> 2x = 10\n";
+    cout << "    Step 2: divide both sides by 2    -> x = 5\n\n";
+
+    cout << "  Powers and Roots\n";
+    cout << "  x^n means x multiplied by itself n times.\n";
+    cout << "  2^5 = 2x2x2x2x2 = 32   |   3^3 = 27   |   4^3 = 64\n";
+    cout << "  Square root: the number which, squared, gives the original.\n";
+    cout << "  sqrt(64) = 8 because 8 x 8 = 64\n";
+    cout << "  Any non-zero number to the power of 0 equals 1: x^0 = 1\n\n";
+
+    cout << "  Prime Numbers\n";
+    cout << "  A prime number has exactly two factors: 1 and itself.\n";
+    cout << "  Primes: 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37 ...\n";
+    cout << "  1 is NOT prime (only one factor). 2 is the only even prime.\n";
+    cout << "  To test: divide by all primes up to its square root.\n\n";
+
+    cout << "  LCM and GCD\n";
+    cout << "  LCM (Least Common Multiple): smallest number divisible by both.\n";
+    cout << "  LCM(4, 6) = 12   (multiples of 4: 4,8,12 | of 6: 6,12)\n";
+    cout << "  GCD (Greatest Common Divisor): largest divisor shared by both.\n";
+    cout << "  GCD(18, 24) = 6  (factors of 18: 1,2,3,6,9,18 | of 24: 1,2,3,4,6...)\n";
+}
+
+void showChemistryMaterial() {
+    cout << "\n  ===  CHEMISTRY  ===\n\n";
+
+    cout << "  ELEMENTS AND THE PERIODIC TABLE\n";
+    displaySeparator();
+    cout << "  An element is a pure substance made of only one type of atom.\n";
+    cout << "  Elements cannot be broken down by chemical reactions.\n";
+    cout << "  There are 118 known elements, arranged in the Periodic Table\n";
+    cout << "  by increasing atomic number (number of protons).\n\n";
+
+    cout << "  Key Element Symbols\n";
+    cout << "  Many symbols come from Latin names:\n";
+    cout << "  H  = Hydrogen  (lightest, most abundant element in the universe)\n";
+    cout << "  O  = Oxygen    (essential for respiration and combustion)\n";
+    cout << "  C  = Carbon    (basis of all organic life on Earth)\n";
+    cout << "  N  = Nitrogen  (makes up ~78% of Earth's atmosphere)\n";
+    cout << "  Na = Sodium    (Latin: Natrium) - reactive alkali metal\n";
+    cout << "  Fe = Iron      (Latin: Ferrum)  - most used metal in industry\n";
+    cout << "  Au = Gold      (Latin: Aurum)   - noble metal, does not corrode\n";
+    cout << "  Ag = Silver    (Latin: Argentum)- best electrical conductor\n";
+    cout << "  Cu = Copper    (Latin: Cuprum)  - excellent heat conductor\n";
+    cout << "  K  = Potassium (Latin: Kalium)  - essential for nerve function\n";
+    cout << "  Pb = Lead      (Latin: Plumbum) - very dense, used in shielding\n";
+    cout << "  Sn = Tin       (Latin: Stannum) - used in food cans and soldering\n\n";
+
+    cout << "  Atomic Structure\n";
+    cout << "  Nucleus: contains protons (+) and neutrons (no charge)\n";
+    cout << "  Shells: contain electrons (-) orbiting the nucleus\n";
+    cout << "  Atomic number = number of protons (defines the element)\n";
+    cout << "  Mass number   = protons + neutrons\n";
+    cout << "  Isotopes: same element, different number of neutrons\n\n";
+
+    cout << "  COMPOUNDS AND REACTIONS\n";
+    displaySeparator();
+    cout << "  A compound forms when two or more elements bond chemically.\n";
+    cout << "  Unlike mixtures, compounds have fixed compositions.\n\n";
+
+    cout << "  Common Compounds\n";
+    cout << "  H2O        = Water          (2 hydrogen + 1 oxygen atoms)\n";
+    cout << "  CO2        = Carbon dioxide (greenhouse gas, plant food)\n";
+    cout << "  NaCl       = Table salt     (sodium + chlorine)\n";
+    cout << "  CH4        = Methane        (natural gas, simplest hydrocarbon)\n";
+    cout << "  C2H5OH     = Ethanol        (alcohol in beverages)\n";
+    cout << "  C12H22O11  = Sucrose        (common table sugar)\n\n";
+
+    cout << "  pH Scale (0-14)\n";
+    cout << "  pH < 7  : Acidic   - lemon juice (2), vinegar (3), coffee (5)\n";
+    cout << "  pH = 7  : Neutral  - pure water\n";
+    cout << "  pH > 7  : Alkaline - baking soda (9), bleach (13), NaOH (14)\n";
+    cout << "  Each step on the pH scale is a factor of 10 difference.\n\n";
+
+    cout << "  Types of Reactions\n";
+    cout << "  Exothermic : releases energy (heat/light). Burning, explosions.\n";
+    cout << "  Endothermic: absorbs energy from surroundings. Photosynthesis.\n";
+    cout << "  Neutralisation: Acid + Base -> Salt + Water\n";
+    cout << "  Oxidation  : loss of electrons (OIL - Oxidation Is Loss)\n";
+    cout << "  Reduction  : gain of electrons (RIG - Reduction Is Gain)\n\n";
+
+    cout << "  Photosynthesis Equation\n";
+    cout << "  6CO2 + 6H2O + light energy -> C6H12O6 + 6O2\n";
+    cout << "  Plants absorb CO2 and water; they release glucose and oxygen.\n\n";
+
+    cout << "  States of Matter\n";
+    cout << "  Solid  : fixed shape, fixed volume. Particles tightly packed.\n";
+    cout << "  Liquid : fixed volume, takes shape of container.\n";
+    cout << "  Gas    : no fixed shape or volume. Particles move freely.\n";
+    cout << "  Physical change (melting, boiling): composition unchanged.\n";
+    cout << "  Chemical change (burning, rusting): new substances are formed.\n";
+    cout << "  Catalysts speed up reactions without being consumed themselves.\n";
+}
+
