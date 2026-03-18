@@ -452,3 +452,82 @@ StudentResult runTest(mt19937& rng) {
 
     return result;
 }
+
+// ---------- STATISTICS ----------
+
+void displayStatistics(const vector<StudentResult>& results) {
+    if (results.empty()) {
+        cout << "\n  No test results yet.\n";
+        return;
+    }
+
+    cout << "\n  STATISTICS\n";
+    displaySeparator();
+
+    const StudentResult* best = &results[0];
+    const StudentResult* worst = &results[0];
+    double totalPct = 0.0;
+
+    for (const auto& r : results) {
+        if (r.percentage > best->percentage)  best = &r;
+        if (r.percentage < worst->percentage) worst = &r;
+        totalPct += r.percentage;
+    }
+
+    double avgPct = totalPct / static_cast<double>(results.size());
+
+    cout << "  Students tested : " << results.size() << "\n";
+    cout << "  Average score   : " << fixed << setprecision(1)
+        << avgPct << "% [" << gradeLabel(calculateGrade(avgPct)) << "]\n";
+    cout << "  Best result     : " << best->name
+        << "  " << fixed << setprecision(1) << best->percentage << "%\n";
+    cout << "  Worst result    : " << worst->name
+        << "  " << fixed << setprecision(1) << worst->percentage << "%\n";
+
+    // Aggregate per-category performance across all sessions
+    map<Category, int> catCorrect, catTotal;
+    for (const auto& r : results) {
+        for (const auto& [cat, cnt] : r.correctPerCategory) catCorrect[cat] += cnt;
+        for (const auto& [cat, cnt] : r.totalPerCategory)   catTotal[cat] += cnt;
+    }
+
+    if (!catTotal.empty()) {
+        cout << "\n  Category success rates:\n";
+        displaySeparator();
+
+        Category bestCat = catTotal.begin()->first;
+        Category worstCat = catTotal.begin()->first;
+
+        for (const auto& [cat, total] : catTotal) {
+            if (total == 0) continue;
+            double pct = (static_cast<double>(catCorrect[cat]) / total) * 100.0;
+            cout << "  - " << setw(14) << left << categoryToString(cat)
+                << ": " << fixed << setprecision(1) << pct << "%\n";
+
+            double bestPct = catTotal[bestCat] > 0
+                ? (static_cast<double>(catCorrect[bestCat]) / catTotal[bestCat]) * 100.0 : 0.0;
+            double worstPct = catTotal[worstCat] > 0
+                ? (static_cast<double>(catCorrect[worstCat]) / catTotal[worstCat]) * 100.0 : 100.0;
+
+            if (pct > bestPct)  bestCat = cat;
+            if (pct < worstPct) worstCat = cat;
+        }
+
+        cout << "\n  Best category  : " << categoryToString(bestCat) << "\n";
+        cout << "  Worst category : " << categoryToString(worstCat) << "\n";
+    }
+
+    cout << "\n  All results:\n";
+    displaySeparator();
+    cout << "  " << setw(22) << left << "Name"
+        << setw(10) << "Score"
+        << setw(8) << "Pct"
+        << "Grade\n";
+    displaySeparator();
+    for (const auto& r : results) {
+        cout << "  " << setw(22) << left << r.name
+            << setw(10) << (to_string(r.score) + "/" + to_string(r.maxScore))
+            << setw(8) << (to_string(static_cast<int>(r.percentage)) + "%")
+            << gradeLabel(r.grade) << "\n";
+    }
+}
