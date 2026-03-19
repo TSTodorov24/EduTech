@@ -679,3 +679,108 @@ void showChemistryMaterial() {
     cout << "  Catalysts speed up reactions without being consumed themselves.\n";
 }
 
+void showEnglishMaterial() {
+    cout << "\n  ===  ENGLISH  ===\n\n";
+
+    cout << "  GRAMMAR - PARTS OF SPEECH\n";
+    displaySeparator();
+    cout << "  Noun        : person, place, thing, or idea.\n";
+    cout << "                Examples: dog, London, freedom, happiness\n\n";
+    cout << "  Verb        : action or state.\n";
+    cout << "                Examples: run, think, is, become\n\n";
+    cout << "  Adjective   : describes or modifies a noun.\n";
+    cout << "                Examples: bright, fast, ancient, enormous\n\n";
+    cout << "  Adverb      : modifies a verb, adjective, or other adverb.\n";
+    cout << "                Examples: quickly, very, silently, almost\n\n";
+    cout << "  Pronoun     : replaces a noun to avoid repetition.\n";
+    cout << "                Examples: he, she, they, it, we, you\n\n";
+    cout << "  Preposition : shows the relationship between a noun and another word.\n";
+    cout << "                Examples: under, beside, through, above, within\n\n";
+    cout << "  Conjunction : connects words, phrases, or clauses.\n";
+    cout << "                Coordinating: and, but, or, nor, so, yet, for\n";
+    cout << "                Subordinating: because, although, while, if, since\n\n";
+
+    cout << "  TENSES\n";
+    displaySeparator();
+    cout << "  Simple present    : I eat lunch.          (habit / general truth)\n";
+    cout << "  Present continuous: I am eating lunch.    (happening right now)\n";
+    cout << "  Simple past       : I ate lunch.          (completed action)\n";
+    cout << "  Past continuous   : I was eating lunch.   (ongoing past action)\n";
+    cout << "  Present perfect   : I have eaten lunch.   (past with present link)\n";
+    cout << "  Past perfect      : I had eaten lunch.    (before another past event)\n\n";
+
+    cout << "  IRREGULAR VERBS (common)\n";
+    displaySeparator();
+    cout << "  Base     -> Past simple -> Past participle\n";
+    cout << "  go       -> went        -> gone\n";
+    cout << "  eat      -> ate         -> eaten\n";
+    cout << "  run      -> ran         -> run\n";
+    cout << "  write    -> wrote       -> written\n";
+    cout << "  know     -> knew        -> known\n";
+    cout << "  take     -> took        -> taken\n";
+    cout << "  see      -> saw         -> seen\n\n";
+
+    cout << "  COMPARATIVES AND SUPERLATIVES\n";
+    displaySeparator();
+    cout << "  Short adjectives (1-2 syllables): add -er / -est\n";
+    cout << "  tall -> taller -> tallest\n";
+    cout << "  fast -> faster -> fastest\n\n";
+    cout << "  Long adjectives (3+ syllables): use more / most\n";
+    cout << "  beautiful -> more beautiful -> most beautiful\n\n";
+    cout << "  Irregular forms:\n";
+    cout << "  good -> better -> best\n";
+    cout << "  bad  -> worse  -> worst\n";
+    cout << "  far  -> farther -> farthest\n\n";
+
+    cout << "  IRREGULAR PLURALS\n";
+    displaySeparator();
+    cout << "  child  -> children  |  mouse  -> mice    |  tooth  -> teeth\n";
+    cout << "  cactus -> cacti     |  foot   -> feet    |  man    -> men\n";
+    cout << "  woman  -> women     |  goose  -> geese   |  ox     -> oxen\n\n";
+
+    cout << "  SENTENCE TYPES\n";
+    displaySeparator();
+    cout << "  Declarative   : states a fact.          (The sky is blue.)\n";
+    cout << "  Interrogative : asks a question.        (What time is it?)\n";
+    cout << "  Imperative    : gives a command.        (Close the door.)\n";
+    cout << "  Exclamatory   : expresses strong emotion.(What a surprise!)\n\n";
+
+    cout << "  ACTIVE VS PASSIVE VOICE\n";
+    displaySeparator();
+    cout << "  Active : subject performs the action.\n";
+    cout << "           The cat ate the fish.\n";
+    cout << "  Passive: subject receives the action.\n";
+    cout << "           The fish was eaten by the cat.\n\n";
+
+    cout << "  VOCABULARY - WORD RELATIONSHIPS\n";
+    displaySeparator();
+    cout << "  Synonym  : same/similar meaning.  happy = joyful = glad\n";
+    cout << "  Antonym  : opposite meaning.       ancient <-> modern\n\n";
+
+    cout << "  Advanced Words\n";
+    cout << "  Benevolent  : kind and generous toward others\n";
+    cout << "  Eloquent    : fluent and persuasive in speech or writing\n";
+    cout << "  Ambiguous   : open to more than one interpretation\n";
+    cout << "  Nocturnal   : active during the night (bats, owls, hedgehogs)\n";
+    cout << "  Arid        : having little or no rain; very dry\n";
+    cout << "  Vivid       : producing powerful feelings; bright and intense\n";
+    cout << "  Scarce      : available only in insufficient quantities\n";
+    cout << "  Monotonous  : tedious because of lacking variety\n";
+    cout << "  Elation     : a state of great happiness and exhilaration\n";
+    cout << "  Transparent : clear enough to see through; honest and open\n";
+}
+
+void displayStudyMaterial() {
+    cout << "\n  STUDY MATERIAL\n";
+    displaySeparator();
+    cout << "  1. Mathematics\n";
+    cout << "  2. Chemistry\n";
+    cout << "  3. English\n";
+    displaySeparator();
+
+    int choice = readInt("  Choose subject (1-3): ", 1, 3);
+
+    if (choice == 1) showMathMaterial();
+    else if (choice == 2) showChemistryMaterial();
+    else                  showEnglishMaterial();
+}
