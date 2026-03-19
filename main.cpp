@@ -897,3 +897,50 @@ void displayFunFacts(mt19937& rng) {
         }
     }
 
+
+    // ---------- MAIN ----------
+
+    int main() {
+        random_device seed;
+        mt19937 rng(seed());
+
+        vector<StudentResult> allResults;
+
+        bool running = true;
+        while (running) {
+            displayMainMenu();
+            int choice = readInt("  Enter choice (1-5): ", 1, 5);
+
+            switch (choice) {
+            case 1: {
+                StudentResult result = runTest(rng);
+                allResults.push_back(result);
+                cout << "\n  Press Enter to return to menu...";
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.get();
+                break;
+            }
+            case 2:
+                displayStatistics(allResults);
+                cout << "\n  Press Enter to return to menu...";
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.get();
+                break;
+            case 3:
+                displayStudyMaterial();
+                cout << "\n  Press Enter to return to menu...";
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                cin.get();
+                break;
+            case 4:
+                displayFunFacts(rng);
+                break;
+            case 5:
+                running = false;
+                cout << "\n  Goodbye!\n\n";
+                break;
+            }
+        }
+
+        return 0;
+    }
