@@ -784,3 +784,116 @@ void displayStudyMaterial() {
     else if (choice == 2) showChemistryMaterial();
     else                  showEnglishMaterial();
 }
+
+
+// ---------- FUN FACTS ----------
+
+// 10 verified, non-repeating facts per subject
+vector<string> getMathFacts() {
+    return {
+        "A googol is 1 followed by 100 zeros. Google named itself after this number.",
+        "Zero is the only number that cannot be represented in Roman numerals.",
+        "The equals sign (=) was invented in 1557 by Welsh mathematician Robert Recorde.",
+        "Pi has been calculated to over 100 trillion decimal places and never repeats or ends.",
+        "The word 'hundred' comes from the Old Norse 'hundrath', which actually meant 120, not 100.",
+        "The Fibonacci sequence appears in sunflower seed spirals, pine cones, and shell shapes.",
+        "There are more possible chess games than there are atoms in the observable universe.",
+        "1729 is the smallest number expressible as the sum of two cubes in two different ways.",
+        "A 'perfect number' equals the sum of its proper divisors: 6 = 1+2+3, and 28 = 1+2+4+7+14.",
+        "Euclid proved around 300 BC that there are infinitely many prime numbers - and he was right.",
+    };
+}
+
+vector<string> getChemFacts() {
+    return {
+        "Gold is so chemically stable that ancient Egyptian gold artifacts are still chemically pure today.",
+        "Osmium is the densest natural element: a teaspoon of it weighs about 45 grams.",
+        "Hot water can freeze faster than cold water under certain conditions - this is the Mpemba effect.",
+        "Diamonds and pencil graphite are both made entirely of carbon, just arranged differently.",
+        "The human body contains enough carbon to fill roughly 9,000 standard pencils.",
+        "Gallium melts at just 29.8 degrees Celsius - warm enough to melt in your hand.",
+        "Helium is the only element that cannot be solidified at normal atmospheric pressure.",
+        "Water expands by about 9% when it freezes, which is why ice floats and pipes burst in winter.",
+        "The smell of rain on dry earth has a name - petrichor - caused by a compound called geosmin.",
+        "A single gram of the element astatine has never been isolated; it is among the rarest on Earth.",
+    };
+}
+
+vector<string> getEnglishFacts() {
+    return {
+        "The word 'set' has over 430 definitions in the Oxford English Dictionary - the most of any word.",
+        "Shakespeare invented over 1,700 words still used today, including 'bedroom', 'lonely', and 'generous'.",
+        "The sentence 'The quick brown fox jumps over the lazy dog' uses every letter of the alphabet.",
+        "English has borrowed words from over 350 languages, including 'algebra' (Arabic) and 'shampoo' (Hindi).",
+        "The shortest grammatically complete sentence in English is 'Go.' - it implies 'You go.'",
+        "The word 'naughty' originally meant 'having nothing' - from 'naught', meaning zero.",
+        "There are only four common English words ending in '-dous': tremendous, horrendous, stupendous, hazardous.",
+        "The word 'bookkeeper' is the only common word with three consecutive double-letter pairs.",
+        "English is the official language of international aviation - all pilots must speak it worldwide.",
+        "The word 'queue' sounds identical if you remove the last four letters, leaving just the letter Q.",
+    };
+}
+
+// Displays random non-repeating facts with navigation between show next / change subject / exit
+void displayFunFacts(mt19937& rng) {
+    bool inFunFacts = true;
+
+    while (inFunFacts) {
+        cout << "\n  FUN FACTS\n";
+        displaySeparator();
+        cout << "  1. Mathematics\n";
+        cout << "  2. Chemistry\n";
+        cout << "  3. English\n";
+        cout << "  4. Back to main menu\n";
+        displaySeparator();
+
+        int subjectChoice = readInt("  Choose subject (1-4): ", 1, 4);
+
+        if (subjectChoice == 4) {
+            inFunFacts = false;
+            break;
+        }
+
+        vector<string> facts;
+        if (subjectChoice == 1) facts = getMathFacts();
+        else if (subjectChoice == 2) facts = getChemFacts();
+        else                         facts = getEnglishFacts();
+
+        // Track shown indices to guarantee no repeats in a session
+        set<int> shownIndices;
+        bool inSubject = true;
+
+        while (inSubject) {
+            if (shownIndices.size() == facts.size()) {
+                cout << "\n  You have seen all " << facts.size()
+                    << " facts for this subject. Resetting...\n";
+                shownIndices.clear();
+            }
+
+            // Pick unseen random index
+            int idx;
+            do {
+                uniform_int_distribution<int> dist(0, static_cast<int>(facts.size()) - 1);
+                idx = dist(rng);
+            } while (shownIndices.count(idx));
+
+            shownIndices.insert(idx);
+
+            cout << "\n  ";
+            displaySeparator();
+            cout << "  FACT " << shownIndices.size()
+                << " of " << facts.size() << "\n\n";
+            cout << "  " << facts[idx] << "\n\n";
+            displaySeparator();
+
+            cout << "  1. Show another fact\n";
+            cout << "  2. Back to subject selection\n";
+            cout << "  3. Back to main menu\n";
+            displaySeparator();
+
+            int action = readInt("  Choose (1-3): ", 1, 3);
+            if (action == 2) { inSubject = false; }
+            else if (action == 3) { inSubject = false; inFunFacts = false; }
+        }
+    }
+
